@@ -8,10 +8,12 @@ if (!argv.webapi || !argv.appid || !argv.memo ) {
 				 '--memo="Additional memo for your token"' )
 }
 
+else {
 request
     //.post('https://api.steampowered.com/IGameServersService/CreateAccount/v1/?key=' + argv.webapi + '&appid=' + argv.appid + "&memo=" + Date.now().toString())
 	.post('https://api.steampowered.com/IGameServersService/CreateAccount/v1/?key=' + argv.webapi + '&appid=' + argv.appid + "&memo=" + argv.memo)
     .set('accept', 'json')
     .end((err, res) => {
          console.log(res.body.response.login_token);
-});
+})
+};
