@@ -1,11 +1,22 @@
 #!/bin/bash
 
+node=""
+
 type nodejs >> /dev/null
 if [ $? = 0 ]; then
   echo "NodeJS Found! Resuming..."
-else
-  echo "NodeJS not found!! Install nodejs to continue..."
-  exit;
+  node="nodejs"
+fi
+
+type node >> /dev/null
+if [ $? = 0 ]; then
+  echo "Node Found! Resuming..."
+  node="node"
+fi
+
+if [ $node = 0 ]; then
+  echo "NodeJS or Node not found!! Install node first"
+  exit 1;
 fi
 
 function interactive() {
