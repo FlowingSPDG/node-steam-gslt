@@ -18,7 +18,7 @@ else if (argv.action == "create" || !argv.action){
 		.set('accept', 'json')
 		.end((err, res) => {
 			console.log(res.body.response.login_token);
-	})
+		})
 }
 else if (argv.action == "delete") {
 	request

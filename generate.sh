@@ -81,7 +81,7 @@ tokens="";
 while [ $number != 0 ]; do
 #  tokens+="nodejs ./app.js --webapi=$token --appid=$appid --memo=$prefix$number;
 #";
-  tokens+="${node} ./app.js --webapi=$token --appid=$appid --memo=$prefix$number;";
+  tokens+="${node} ./app.js --action=create --webapi=$token --appid=$appid --memo=$prefix$number;";
   tokens+="
 ";
   number=$(($number -1 ))
