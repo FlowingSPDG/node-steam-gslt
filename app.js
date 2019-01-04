@@ -13,7 +13,6 @@ if (!argv.webapi) {
 
 else if (argv.action == "create" || !argv.action){
 	request
-		//.post('https://api.steampowered.com/IGameServersService/CreateAccount/v1/?key=' + argv.webapi + '&appid=' + argv.appid + "&memo=" + Date.now().toString())
 		.post('https://api.steampowered.com/IGameServersService/CreateAccount/v1/?key=' + argv.webapi + '&appid=' + argv.appid + "&memo=" + argv.memo)
 		.set('accept', 'json')
 		.end((err, res) => {
@@ -22,16 +21,9 @@ else if (argv.action == "create" || !argv.action){
 }
 else if (argv.action == "delete") {
 	request
-		//.post('https://api.steampowered.com/IGameServersService/DeleteAccount/v1/?key=' + argv.webapi + '&appid=' + argv.appid + "&memo=" + Date.now().toString())
-		//.post('https://api.steampowered.com/IGameServersService/DeleteAccount/v1/?key=' + argv.webapi + '&appid=' + argv.appid + "&memo=" + argv.memo)
-		// 8340C1503CD213D35ED4F976B1C8EFCE
-		//.post('https://api.steampowered.com/IGameServersService/DeleteAccount/v1/?key=' + argv.webapi + '&steamid=' + argv.token)
 		.get('https://api.steampowered.com/IGameServersService/GetAccountList/v1/?key=' + argv.webapi)
 		.set('accept', 'json')
 		.end((err, res) => {
-			//console.log(res.body.response.servers);
-			//var json = JSON.stringify(res.body.response.servers);
-			//console.log(json);
 			response = res.body.response.servers;
 			var token = response.filter(function(item, index){
 				if (item.login_token == argv.token) return true;
